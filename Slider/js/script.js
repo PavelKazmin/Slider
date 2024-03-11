@@ -55,16 +55,20 @@ const linksActive = (index) => {
 	links[index].classList.add('link-active')
 }
 
+
 //EVENTLISTENERS
 
 nextButton.addEventListener('click', nextSlide)
 prevButton.addEventListener('click', prevSlide)
+
 
 dots.forEach((dot, index) => {
 	dot.addEventListener('click', () => {
 		position = 679 * index
 		sliderLine.style.left = -position + 'px'
 		dotIndex = index
+		linkIndex = dotIndex
+		linksActive(linkIndex)
 		thisSlide(dotIndex)
 	})
 })
@@ -74,6 +78,8 @@ links.forEach((link, index) => {
 		position = 679 * index
 		sliderLine.style.left = -position + 'px'
 		linkIndex = index
+		dotIndex = linkIndex
+		thisSlide(dotIndex)
 		linksActive(linkIndex)
 	})
 })
@@ -81,4 +87,5 @@ links.forEach((link, index) => {
 //SETINTERVAL
 setInterval( () => {
 	nextSlide()
-}, 3000)
+}, 5000)
+
